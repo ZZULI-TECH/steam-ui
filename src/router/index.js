@@ -36,6 +36,10 @@ export const constantRouterMap = [
     path: '/test',
     component: () => import('@/views/dashboard/test')
   },
+  {
+    path: '/login',
+    component: () => import('@/views/login')
+  },
   // {
   //   path: '/nested',
   //   component: Layout,

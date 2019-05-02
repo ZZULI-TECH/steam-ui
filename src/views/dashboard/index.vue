@@ -8,7 +8,7 @@
         <div class="logo">
           <span class="logo_holder">
             <a href="http://store.steampowered.com/">
-              <img src=" /src/assets/image/globalheader_logo.png" width="176" height="44" >
+              <img src="/src/assets/image/globalheader_logo.png" width="176" height="44" >
             </a>
           </span>
         </div>
@@ -36,20 +36,25 @@
           <div class="anzhuang">
             <a href="https://steamcdn-a.akamaihd.net/client/installer/SteamSetup.exe">安装Steam</a>
           </div>
-          <div class="login"> <span><a href="login.html">登录</a></span>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; <span style="position:relative"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" onclick="language_show()" onmouseout="language_hide()" >语言
-          <span class="caret"/></a>
-            <ul id="language" class="dropdown-menu" style="position:absolute; top: 11px; background:#171a21;" onmouseout="language_hide()" onmouseover="language_show()">
-              <li>
-                <a href="#" style="color: #999;">中文</a>
-              </li>
-              <li>
-                <a href="#" style="color:#999;">English</a>
-              </li>
-              <li>
-                <a href="#" style="color:#999;">日本语</a>
-              </li>
-            </ul>
-          </span>
+          <div class="login">
+            <span><a @click="$router.push('/login')">登录</a></span>
+            &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+            <span style="position:relative">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" onclick="language_show()" onmouseout="language_hide()" >语言
+                <span class="caret"/>
+              </a>
+              <ul id="language" class="dropdown-menu" style="position:absolute; top: 11px; background:#171a21;" onmouseout="language_hide()" onmouseover="language_show()">
+                <li>
+                  <a href="#" style="color: #999;">中文</a>
+                </li>
+                <li>
+                  <a href="#" style="color:#999;">English</a>
+                </li>
+                <li>
+                  <a href="#" style="color:#999;">日本语</a>
+                </li>
+              </ul>
+            </span>
           </div>
         </div>
         <!--搜索框-->
@@ -200,15 +205,15 @@
             <!--轮播图2-->
             <div class="swiper-slide">
               <div class="lunbotu_left">
-                <a href="#"><img id="lc_pic" src="/src/assets/image/lost castle/lc4.jpg" width="616" height="353" ></a>
+                <a href="#"><img id="lc_pic" src="/src/assets/image/lost%20castle/lc4.jpg" width="616" height="353" ></a>
               </div>
               <div class="lunbotu_right">
                 <div class="lunbotu_right_top">Lost Castle</div>
                 <div class="lunbotu_right_middle">
-                  <img src="/src/assets/image/lost castle/lc4.jpg" width="142" height="69" onmouseover="lc_pic4()" >
-                  <img src="/src/assets/image/lost castle/lc3.jpg" width="142" height="69" onmouseover="lc_pic3()" >
-                  <img src="/src/assets/image/lost castle/lc2.jpg" width="142" height="69" onmouseover="lc_pic2()" >
-                <img src="/src/assets/image/lost castle/lc1.jpg" width="142" height="69" onmouseover="lc_pic1()" > </div>
+                  <img src="/src/assets/image/lost%20castle/lc4.jpg" width="142" height="69" onmouseover="lc_pic4()" >
+                  <img src="/src/assets/image/lost%20castle/lc3.jpg" width="142" height="69" onmouseover="lc_pic3()" >
+                  <img src="/src/assets/image/lost%20castle/lc2.jpg" width="142" height="69" onmouseover="lc_pic2()" >
+                <img src="/src/assets/image/lost%20castle/lc1.jpg" width="142" height="69" onmouseover="lc_pic1()" > </div>
                 <div class="now_out">现已推出</div>
                 <div class="hot">
                   <div class="hot_tag">热销商品</div>
@@ -223,15 +228,15 @@
             <!--轮播图3-->
             <div class="swiper-slide">
               <div class="lunbotu_left">
-                <a href="#"><img id="dc_pic" src="/src/assets/image/death coming/dc1.jpg" width="616" height="353" ></a>
+                <a href="#"><img id="dc_pic" src="/src/assets/image/death%20coming/dc1.jpg" width="616" height="353" ></a>
               </div>
               <div class="lunbotu_right">
                 <div class="lunbotu_right_top">Death Coming</div>
                 <div class="lunbotu_right_middle">
-                  <img src="/src/assets/image/death coming/dc1.jpg" width="142" height="69" onmouseover="dc_pic1()" >
-                  <img src="/src/assets/image/death coming/dc4.jpg" width="142" height="69" onmouseover="dc_pic4()" >
-                  <img src="/src/assets/image/death coming/dc3.jpg" width="142" height="69" onmouseover="dc_pic3()" >
-                  <img src="/src/assets/image/death coming/dc2.jpg" width="142" height="69" onmouseover="dc_pic2()" >
+                  <img src="/src/assets/image/death%20coming/dc1.jpg" width="142" height="69" onmouseover="dc_pic1()" >
+                  <img src="/src/assets/image/death%20coming/dc4.jpg" width="142" height="69" onmouseover="dc_pic4()" >
+                  <img src="/src/assets/image/death%20coming/dc3.jpg" width="142" height="69" onmouseover="dc_pic3()" >
+                  <img src="/src/assets/image/death%20coming/dc2.jpg" width="142" height="69" onmouseover="dc_pic2()" >
                 </div>
                 <div class="now_out">现已推出</div>
                 <div class="hot">
@@ -255,7 +260,7 @@
         <!--左侧栏-->
         <div class="left_tag">
           <div class="steam_card">
-            <img src="/src/assets/欢迎来到 Steam_files/steamcards_promo.png" alt="" width="213px" height="119px" >
+            <img src="/src/assets/欢迎来到%20Steam_files/steamcards_promo.png" alt="" width="213px" height="119px" >
           </div>
           <div class="steam_tag">
             <ul>
@@ -364,28 +369,28 @@
               <!--轮播图1-->
               <div class="swiper-slide">
                 <div class="tebieyouhuizu">
-                  <img src="/src/assets/欢迎来到 Steam_files/header(2).jpg" alt="" width="308px;" height="143px;" >
+                  <img src="/src/assets/欢迎来到%20Steam_files/header(2).jpg" alt="" width="308px;" height="143px;" >
                   <div class="price_count2"/>
 
                 </div>
                 <div class="tebieyouhuizu">
-                  <img src="/src/assets/欢迎来到 Steam_files/header(3).jpg" alt="" width="308px;" height="143px;" >
+                  <img src="/src/assets/欢迎来到%20Steam_files/header(3).jpg" alt="" width="308px;" height="143px;" >
                   <div class="price_count2"/>
                 </div>
                 <div class="tebieyouhuizu">
-                  <img src="/src/assets/欢迎来到 Steam_files/header(4).jpg" alt="" width="308px;" height="143px;" >
+                  <img src="/src/assets/欢迎来到%20Steam_files/header(4).jpg" alt="" width="308px;" height="143px;" >
                   <div class="price_count2"/>
                 </div>
                 <div class="tebieyouhuizu">
-                  <img src="/src/assets/欢迎来到 Steam_files/header(5).jpg" alt="" width="308px;" height="143px;" >
+                  <img src="/src/assets/欢迎来到%20Steam_files/header(5).jpg" alt="" width="308px;" height="143px;" >
                   <div class="price_count2"/>
                 </div>
                 <div class="tebieyouhuizu">
-                  <img src="/src/assets/欢迎来到 Steam_files/header(6).jpg" alt="" width="308px;" height="143px;" >
+                  <img src="/src/assets/欢迎来到%20Steam_files/header(6).jpg" alt="" width="308px;" height="143px;" >
                   <div class="price_count2"/>
                 </div>
                 <div class="tebieyouhuizu">
-                  <img src="/src/assets/欢迎来到 Steam_files/header(7).jpg" alt="" width="308px;" height="143px;" >
+                  <img src="/src/assets/欢迎来到%20Steam_files/header(7).jpg" alt="" width="308px;" height="143px;" >
                   <div class="price_count2"/>
                 </div>
 
@@ -543,9 +548,9 @@
                     <div class="leg_nav_content1_right1_in_comment_title">总体用户评测</div>
                     <div class="leg_nav_content1_right1_in_comment_content">好评如潮</div>
                     <img src="/src/assets/image/end/end1.jpg" alt="" width="273px" height="150px">
-                    <img src="/src/assets/image/end/end2.jpg"alt="" width="273px" height="150px">
-                    <img src="/src/assets/image/end/end3.jpg"alt="" width="273px" height="150px">
-                    <img src="/src/assets/image/end/end4.jpg"alt="" width="273px" height="150px">
+                    <img src="/src/assets/image/end/end2.jpg" alt="" width="273px" height="150px">
+                    <img src="/src/assets/image/end/end3.jpg" alt="" width="273px" height="150px">
+                    <img src="/src/assets/image/end/end4.jpg" alt="" width="273px" height="150px">
                   </div>
                 </div>
 

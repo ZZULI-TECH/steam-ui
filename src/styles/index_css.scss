@@ -1,4 +1,3 @@
-@charset "utf-8";
 /* CSS Document */
 
 *{ padding:0; margin:0; border:0;}
@@ -12,7 +11,7 @@ li{ list-style: none;}
 .supernav_cotainer a{ margin-left:8px; color:#c6d4df; text-decoration:none;}
 .supernav_cotainer a:hover{ color:#FFF; text-decoration:none;}
 #globe_actions{ width:218px; height:21px;float:left; margin-top:6px; margin-left:325px;}
-.anzhuang{ width:98px; height:21px; background:url(../image/download.jpg);  text-indent:28px; float:left; }
+.anzhuang{ width:98px; height:21px; background:url(/src/assets/image/download.jpg);  text-indent:28px; float:left; }
 #username_in{ width:218px; height:21px;float:left; margin-top:6px; margin-left:325px; text-align:right;}
 .anzhuang a{ color:#FFF; text-indent:24px; text-align:center; font-size:12px; line-height:21px;}
 .anzhuang a:hover{ color:#CCC; text-decoration:none;}
@@ -48,7 +47,7 @@ li{ list-style: none;}
 .hot_tag{ width: 62px; height: 20px; border-radius: 3px; background-color: #394148; float: left; margin-left: 20px; color: #FFFFFF; font-size: 12px; text-align: center; line-height: 20px;}
 .lunbotu_right_bottom{ width: 324px; height:21px; float: left;  margin-top: 15px;}
 .lunbotu_right_bottom_price{ width: 52px; height: 21px; float: left; margin-left:10px ; color: #acdbe7; font-size: 9px; line-height: 21px;}
-.lunbotu_right_bottom_icon{ background-image: url(../image/icon_platform_win.png); float: right; width: 20px; height: 20px; margin-right: 10px;}
+.lunbotu_right_bottom_icon{ background-image: url(/src/assets/image/icon_platform_win.png); float: right; width: 20px; height: 20px; margin-right: 10px;}
 .left_tag{ width: 213px; height: 975px; position: absolute; left: -240px;top: -70px;}
 .steam_card{ width: 213px; height: 119px;}
 .steam_tag{ width: 213px; height: 856px;}
@@ -62,26 +61,24 @@ li{ list-style: none;}
 .view_all:hover{ border: 1px solid #FFFFFF;}
 .view_all a{ color: #FFFFFF;}
 .view_all a:hover{ color:  #FFFFFF; text-decoration: none;}
-.lunbotu2_left{ width: 306px;height: 390px;background-image: url(../image/background_spotlight.jpg); float: left; margin-right: 7px;}
+.lunbotu2_left{ width: 306px;height: 390px;background-image: url(/src/assets/image/background_spotlight.jpg); float: left; margin-right: 7px;}
 .lunbotu2_left img{ float: left;}
 .teyou{ float: left;}
 .tebieyouhui{ margin-top: 12px; font-size: 15px; float: left; color: #FFFFFF; margin-left: 17px;}
 .teyoushijian{ margin-top: -25px; font-size: 12px; float: left; color: #acdbf5; margin-left: 17px;}
-.price_count{ width: 119px; height: 34px; float: right; margin-top: 20px; background-image: url(../image/price_count.jpg); margin-right: 20px;}
-.tebieyouhuizu{ width: 308px; height: 188px; margin-right: 2px; float:left; background-image: url(../image/background_spotlight.jpg); margin-bottom: 10px; position: relative;}
+.price_count{ width: 119px; height: 34px; float: right; margin-top: 20px; background-image: url(/src/assets/image/price_count.jpg); margin-right: 20px;}
+.tebieyouhuizu{ width: 308px; height: 188px; margin-right: 2px; float:left; background-image: url(/src/assets/image/background_spotlight.jpg); margin-bottom: 10px; position: relative;}
 .tebieyouhuizu img{ float: left;}
-.price_count2{ width: 119px; height: 34px; float: right; margin-top: 5px; background-image: url(../image/price_count.jpg); margin-right: 5px;}
-
+.price_count2{ width: 119px; height: 34px; float: right; margin-top: 5px; background-image: url(/src/assets/image/price_count.jpg); margin-right: 5px;}
 
 #view_steam{width: 100%; height: 95px; float: left; margin-top: 80px; margin-bottom: 40px;}
 .view_steam_in{ width: 940px; height: 95px; margin: 0 auto; }
 .view_steam_in h2{ font-size: 17px;color: #FFFFFF; width: 940px; height: 24px; line-height: 24px; float: left;}
 .view_steam_in_container{ width: 940px; height: 58px; float: left; }
-.view_steam_in_tag{ width: 226px; height: 58px; float: left; background-image: url(../image/background_spotlight.jpg);opacity:0.5;filter(alpha=20); margin-right: 8px; border-radius: 3px; box-shadow: 0 0 4px #000;  }
-.view_steam_in_tag:hover{ opacity:1;filter(alpha=100); color: #FFFFFF;}
+.view_steam_in_tag{ width: 226px; height: 58px; float: left; background-image: url(/src/assets/image/background_spotlight.jpg);opacity:0.5;filter:(alpha=20); margin-right: 8px; border-radius: 3px; box-shadow: 0 0 4px #000;  }
+.view_steam_in_tag:hover{ opacity:1;filter:(alpha=100); color: #FFFFFF;}
 .view_steam_in_tag a{ font-size: 16px; text-align: center; margin: 0 auto; line-height: 58px; color: #60b2d7; margin-left: 100px;}
 .view_steam_in_tag a:hover{ color: #FFFFFF; text-decoration: none;}
-
 
 #appreciate{width: 100%; height: 292px; float: left; margin-top: 20px;}
 .appreciate{ width: 940px; height: 239px; margin: 0 auto;}
@@ -95,7 +92,7 @@ li{ list-style: none;}
 .appreciate_tag_in img{ float: left; border-radius: 3px;}
 .appreciate_tag_title{ color: #FFFFFF; font-size: 15px; float: left; margin-left: 12px;}
 .appreciate_tag_content{ height: 40px; width: 200px; float: left; margin-top: 5px; margin-left: 12px; color: #abdaf4; font-size: 11px; font-style: italic;}
-#leg{ width: 100%; height: 800px; background-image: url(../image/leg_bg.jpg) ; float: left; position: relative;}
+#leg{ width: 100%; height: 800px; background-image: url(/src/assets/image/leg_bg.jpg) ; float: left; position: relative;}
 .leg_nav{ width: 940px; height: 815px; margin: 0 auto;   margin-top: -30px;}
 .leg_nav_li{ width: 940px; height: 30px; float: left;}
 .leg_nav_li li{ height: 30px; list-style: none; float: left; color: #4f94bc; font-size: 13px; text-align: center; line-height: 30px; cursor:pointer}
@@ -117,7 +114,6 @@ li{ list-style: none;}
 .leg_nav_content1_right1_in_comment_content{ width: 272px; height: 15px; font-size: 12px; float: left; margin-left: 8px; color: #95bbd4; }
 .leg_nav_content1_right1_in_comment img{ margin-top: 5px; margin-bottom: 5px; float: left;}
 
-
 #black{ width: 100%; height: 206px; background: black; float: left;}
 .black_in{ width: 940px ; height: 206px; margin: 0 auto; }
 .black_in_line{ width: 940px; height: 40px; border-bottom: 1px solid #3f7696; float: left; position: relative;}
@@ -128,17 +124,6 @@ li{ list-style: none;}
 .login_bottom:hover{background: #97b52d;border: 1px solid #172030;}
 .login_bottom a{ text-decoration: none; color: #FFFFFF; }
 .login_bottom a:hover{ text-decoration: none; color: #FFFFFF;}
-
-
-
-
-
-
-
-
-
-
-
 /*底部*/
 .bottom{ background:#171a21; width:100%; height:200px;}
 .bottom_in{ width:1000px; margin:0 auto; height:200px; padding-top:30px;}
@@ -146,11 +131,11 @@ li{ list-style: none;}
 .supernav_cotainer_b a{ width:80px; height:22px; margin-left:8px; color:#66a7cf; text-decoration:none; display:block; background:#233f54; float:left; text-align:center;}
 .supernav_cotainer_b a:hover{ color:#FFF; text-decoration:none; background:#5bb8f1;}
 .supernav_cotainer_b ul{
-	background: #cddae3;
-	padding: 8px 5px 8px 5px;
-	position: absolute;
-	left: -80px;
-	top: 23px;
+  background: #cddae3;
+  padding: 8px 5px 8px 5px;
+  position: absolute;
+  left: -80px;
+  top: 23px;
 }
 .supernav_cotainer_b li{ width:102px; height:27px; text-align:center; text-height:27px; list-style:none;}
 .supernav_cotainer_b li:hover{ background:#212c3e; color:#FFF;}

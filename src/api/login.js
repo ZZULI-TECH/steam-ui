@@ -1,13 +1,13 @@
 import request from '@/utils/request'
 
-export function login(username, password) {
+export function login(query) {
   return request({
-    url: '/user/login',
-    method: 'post',
-    data: {
-      username,
-      password
-    }
+    // url: '/api/tokens/Login',
+    // method: 'post',
+    // data: query
+    url: '/api/tokens/test',
+    method: 'get',
+    params: query
   })
 }
 
