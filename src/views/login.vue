@@ -29,7 +29,7 @@
           </div>
 
         </div>
-        <div id="username_in" style="display: none;color: #c6d4df; " />
+        <div id="username_in" style="display: none;color: #c6d4df; " >{{ uname }}</div>
         <!--搜索框-->
 
         <div class="search_nav" >
@@ -122,7 +122,7 @@
             <form role="form">
               <div class="form-group">
                 <label for="name" style=" color:#c6d4df; font-size:12px; font-family:Arial, Helvetica, sans-serif;font-weight:normal">Steam账户名称</label>
-                <input id="name" v-model="uname" type="text" class="form-control" placeholder="" value="" style="background-color:rgba( 0, 0, 0, 0.2 ); color:#fff; width:275px; height:30px;box-shadow:1px 1px 0px #45556c; border:#000 1px;">
+                <input id="name" v-model="email" type="text" class="form-control" placeholder="" value="" style="background-color:rgba( 0, 0, 0, 0.2 ); color:#fff; width:275px; height:30px;box-shadow:1px 1px 0px #45556c; border:#000 1px;">
               </div>
               <div class="form-group">
                 <label for="name" style=" color:#c6d4df; font-size:12px; font-family:Arial, Helvetica, sans-serif;font-weight:normal">密码</label>
@@ -155,7 +155,7 @@
         </div>
       </div>
       <div class="lostpassword">
-        <a href="#">忘记您的密码？</a>
+        <a @click="test()">忘记您的密码？</a>
         <a href="#" style="margin-left:545px;">了解更多 Steam的相关信息</a>
       </div>
     </div>
@@ -216,15 +216,23 @@
 </template>
 
 <script>
-import { login } from '@/api/login'
+import { userList } from '@/api/login'
+import store from '@/store'
 export default {
   data() {
     return {
-      uname: '',
+      uname: store.getters.username,
+      email: '',
       upwd: ''
     }
   },
   methods: {
+
+    test() {
+      userList(3, 1).then(res => {
+        console.log(res)
+      })
+    },
 
     // ----------------样式---------------------
     login_con() {
@@ -244,11 +252,10 @@ export default {
         return
       } else {
         const query = {
-          email: this.uname,
+          email: this.email,
           password: this.upwd
         }
-        alert(query.email)
-        login(query).then(res => {
+        this.$store.dispatch('Login', query).then(res => {
           console.log(res)
           c.style.display = 'none'
           d.style.display = 'block'
