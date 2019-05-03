@@ -22,7 +22,7 @@
       </div>
 
       <div id="globe_actions">
-        <div class="login">
+        <div v-if="name === ''|| name === null || name === undefined" class="login">
           <!--<span><a @click="$router.push({path: '/login'})">登录</a></span>-->
           <span><router-link to="/login">登录</router-link></span>
           &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
@@ -42,6 +42,9 @@
               </li>
             </ul>
           </span>
+        </div>
+        <div v-if="name !== '' && name !== null && name !== undefined" style="float: left; width:300px; margin-top: 30px; margin-left:10px; color:#b8b6b4; font-size:12px; line-height:21px;">
+          <span> 欢迎： {{ name }}</span>
         </div>
       </div>
       <!--搜索框-->
@@ -158,10 +161,17 @@
 </template>
 
 <script>
+import store from '@/store'
+
 export default{
   name: 'Header',
   data() {
-
+    return {
+      name: ''
+    }
+  },
+  created() {
+    this.name = store.getters.name
   },
   methods: {
     shop_hide() {
@@ -187,6 +197,58 @@ export default{
     zhengti() {
       const a = document.getElementById('search_bar')
       a.style.fontStyle = 'italic'
+    },
+    search_shop_show() {
+      const a = document.getElementById('myshop')
+      a.style.display = 'block'
+    },
+    search_shop_none() {
+      const a = document.getElementById('myshop')
+      a.style.display = 'none'
+    },
+    search_game_show() {
+      const a = document.getElementById('mygame')
+      a.style.display = 'block'
+    },
+    search_game_none() {
+      const a = document.getElementById('mygame')
+      a.style.display = 'none'
+    },
+    search_soft_show() {
+      const a = document.getElementById('mysoft')
+      a.style.display = 'block'
+    },
+    search_soft_none() {
+      const a = document.getElementById('mysoft')
+      a.style.display = 'none'
+    },
+    search_hardware_show() {
+      const a = document.getElementById('myhardware')
+      a.style.display = 'block'
+    },
+
+    search_video_none() {
+      const a = document.getElementById('myvideo')
+      a.style.display = 'none'
+    },
+
+    search_video_show() {
+      const a = document.getElementById('myvideo')
+      a.style.display = 'block'
+    },
+
+    search_hardware_none() {
+      const a = document.getElementById('myhardware')
+      a.style.display = 'none'
+    },
+    language_show() {
+      const a = document.getElementById('language')
+      a.style.display = 'block'
+    },
+
+    language_hide() {
+      const a = document.getElementById('language')
+      a.style.display = 'none'
     }
   }
 

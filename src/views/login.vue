@@ -66,7 +66,11 @@ export default {
   methods: {
 
     test() {
-      userList(3, 1).then(res => {
+      const query = {
+        pageSize: 3,
+        pageNum: 1
+      }
+      userList(query).then(res => {
         console.log(res)
       })
     },
@@ -93,7 +97,7 @@ export default {
           password: this.upwd
         }
         this.$store.dispatch('Login', query).then(res => {
-          console.log(res)
+          this.$router.push('/')
           c.style.display = 'none'
           d.style.display = 'block'
           d.innerText = '欢迎： ' + a.value

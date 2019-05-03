@@ -8,11 +8,11 @@ export function login(query) {
   })
 }
 
-export function userList(pageSize, pageNum) {
+export function userList(query) {
   return request({
     url: '/api/user/list',
     method: 'GET',
-    params: { pageSize, pageNum }
+    params: query
   })
 }
 

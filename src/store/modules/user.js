@@ -41,6 +41,7 @@ const user = {
           const data = response.content
           setToken(data.token)
           commit('SET_TOKEN', data.token)
+          commit('SET_USERID', data.userId)
           resolve()
         }).catch(error => {
           reject(error)
@@ -54,14 +55,9 @@ const user = {
         getInfo(state.token).then(response => {
           console.log(response)
           const data = response.content
-          // if (data.roles && data.roles.length > 0) { // 验证返回的roles是否是一个非空数组
-          //   commit('SET_ROLES', data.roles)
-          // } else {
-          //   reject('getInfo: roles must be a non-null array !')
-          // }
           // debugger
           commit('SET_NAME', data.name)
-          commit('SET_USERID', data.userId)
+          commit('SET_USERID', data.id)
           commit('SET_AVATAR', data.avatar)
           resolve(response)
         }).catch(error => {
