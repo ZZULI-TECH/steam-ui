@@ -7,7 +7,7 @@ import Router from 'vue-router'
 Vue.use(Router)
 
 /* Layout */
-// import Layout from '../views/layout/Layout'
+import Layout from '../views/layout/index'
 
 /**
 * hidden: true                   if `hidden:true` will not show in the sidebar(default is false)
@@ -22,24 +22,33 @@ Vue.use(Router)
   }
 **/
 export const constantRouterMap = [
-
   {
     path: '/',
-    // component: Layout,
-    component: () => import('@/views/dashboard/index'),
+    component: Layout,
+    redirect: '/dashboard',
+    name: 'dashboard',
     children: [{
-      path: 'dashboard',
+      path: '/dashboard',
       component: () => import('@/views/dashboard/index')
+    },
+    {
+      path: '/login',
+      component: () => import('@/views/login')
     }]
   },
-  {
-    path: '/test',
-    component: () => import('@/views/dashboard/test')
-  },
-  {
-    path: '/login',
-    component: () => import('@/views/login')
-  },
+  // {
+  //   path: '/header',
+  //   component: () => import('@/views/layout/components/header')
+  // },
+  // {
+  //   path: '/footer',
+  //   component: () => import('@/views/layout/components/footer')
+  // },
+  // {
+  //   path: '/layout',
+  //   component: () => import('@/views/layout/index')
+  // },
+
   // {
   //   path: '/nested',
   //   component: Layout,
@@ -109,7 +118,7 @@ export const constantRouterMap = [
 ]
 
 export default new Router({
-  mode: 'history', // 后端支持可开
+  // mode: 'history', // 后端支持可开
   scrollBehavior: () => ({ y: 0 }),
   routes: constantRouterMap
 })
