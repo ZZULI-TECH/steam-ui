@@ -98,7 +98,7 @@ export default {
         }
         this.$store.dispatch('Login', query).then(res => {
           // this.$router.push('/')
-          window.open('/')
+          window.open('/', '_parent')
           c.style.display = 'none'
           d.style.display = 'block'
           d.innerText = '欢迎： ' + a.value
