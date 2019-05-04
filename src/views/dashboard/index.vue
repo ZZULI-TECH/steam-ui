@@ -85,6 +85,9 @@
         <div id="lunbotu">
           <div class="jingxuan"><span v-if="!isAll">最新上架</span>
             <span v-if="isAll">所有游戏</span>
+            <div v-if="isAll" class="view_all" >
+              <a @click="getNewGames()">最新上架</a>
+            </div>
             <div v-if="!isAll" class="view_all" >
               <a @click="viewAll()">浏览所有</a>
             </div>
@@ -200,6 +203,9 @@ export default {
   methods: {
     // 获取游戏列表，按上架时间排序
     getNewGames() {
+      this.isAll = false
+      this.pageQuery.pageSize = 9
+      this.pageQuery.pageNum = 1
       getGames(this.pageQuery).then(res => {
         this.pageQuery.total = res.content.total
         this.games = res.content.records
