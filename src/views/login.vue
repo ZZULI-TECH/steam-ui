@@ -97,7 +97,8 @@ export default {
           password: this.upwd
         }
         this.$store.dispatch('Login', query).then(res => {
-          this.$router.push('/')
+          // this.$router.push('/')
+          window.open('/')
           c.style.display = 'none'
           d.style.display = 'block'
           d.innerText = '欢迎： ' + a.value
