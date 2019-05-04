@@ -1,4 +1,4 @@
-# steam-ui
+# steam-ui [![Build Status](https://travis-ci.org/ZZULI-TECH/steam-ui.svg?branch=master)](https://travis-ci.org/ZZULI-TECH/steam-ui) 
 
 > a project like steam for game platform 
 
