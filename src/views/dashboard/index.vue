@@ -11,81 +11,28 @@
         <div id="swiper-container-first" class="swiper-container">
           <!--轮播图1-->
           <div class="swiper-wrapper">
-            <div class="swiper-slide">
+            <div v-for="(item,index) in recommends" v-if="index < 3" :key="item.id" class="swiper-slide">
               <div class="lunbotu_left">
-                <a href="#"><img id="h1z1_pic" src="/src/assets/image/h1z1/h1z1(4).jpg" width="616" height="353" ></a>
+                <a href="#"><img id="h1z1_pic" :src="item.cover" width="616" height="353" ></a>
               </div>
               <div class="lunbotu_right">
-                <div class="lunbotu_right_top">H1Z1</div>
-                <div class="lunbotu_right_middle">
-                  <img src="/src/assets/image/h1z1/h1z1(1).jpg" width="142" height="69" onmouseover="h1z1_pic1()" >
-                  <img src="/src/assets/image/h1z1/h1z1(2).jpg" width="142" height="69" onmouseover="h1z1_pic2()" >
-                  <img src="/src/assets/image/h1z1/h1z1(3).jpg" width="142" height="69" onmouseover="h1z1_pic3()" >
-                  <img src="/src/assets/image/h1z1/h1z1(4).jpg" width="142" height="69" onmouseover="h1z1_pic4()" >
+                <div class="lunbotu_right_top">{{ item.englishName }}</div>
+                <div
+                  style="width:318px; height:150px; float:left;margin-left: 8px;
+                 font-size: 16px; color: #F3F3F4;letter-spacing: 1px;text-indent: 20px;text-align: left">
+                  {{ item.remark }}
                 </div>
                 <div class="now_out">现已推出抢先体验</div>
                 <div class="hot">
                   <div class="hot_tag">热销商品</div>
                 </div>
                 <div class="lunbotu_right_bottom">
-                  <div class="lunbotu_right_bottom_price">￥68</div>
-                  <div class="lunbotu_right_bottom_icon"/>
-                </div>
-              </div>
-            </div>
-            <!--轮播图2-->
-            <div class="swiper-slide">
-              <div class="lunbotu_left">
-                <a href="#"><img id="lc_pic" src="/src/assets/image/lost%20castle/lc4.jpg" width="616" height="353" ></a>
-              </div>
-              <div class="lunbotu_right">
-                <div class="lunbotu_right_top">Lost Castle</div>
-                <div class="lunbotu_right_middle">
-                  <img src="/src/assets/image/lost%20castle/lc4.jpg" width="142" height="69" onmouseover="lc_pic4()" >
-                  <img src="/src/assets/image/lost%20castle/lc3.jpg" width="142" height="69" onmouseover="lc_pic3()" >
-                  <img src="/src/assets/image/lost%20castle/lc2.jpg" width="142" height="69" onmouseover="lc_pic2()" >
-                <img src="/src/assets/image/lost%20castle/lc1.jpg" width="142" height="69" onmouseover="lc_pic1()" > </div>
-                <div class="now_out">现已推出</div>
-                <div class="hot">
-                  <div class="hot_tag">热销商品</div>
-                </div>
-                <div class="lunbotu_right_bottom">
-                  <div class="lunbotu_right_bottom_price">￥33</div>
-                  <div class="lunbotu_right_bottom_icon"/>
-                </div>
-              </div>
-
-            </div>
-            <!--轮播图3-->
-            <div class="swiper-slide">
-              <div class="lunbotu_left">
-                <a href="#"><img id="dc_pic" src="/src/assets/image/death%20coming/dc1.jpg" width="616" height="353" ></a>
-              </div>
-              <div class="lunbotu_right">
-                <div class="lunbotu_right_top">Death Coming</div>
-                <div class="lunbotu_right_middle">
-                  <img src="/src/assets/image/death%20coming/dc1.jpg" width="142" height="69" onmouseover="dc_pic1()" >
-                  <img src="/src/assets/image/death%20coming/dc4.jpg" width="142" height="69" onmouseover="dc_pic4()" >
-                  <img src="/src/assets/image/death%20coming/dc3.jpg" width="142" height="69" onmouseover="dc_pic3()" >
-                  <img src="/src/assets/image/death%20coming/dc2.jpg" width="142" height="69" onmouseover="dc_pic2()" >
-                </div>
-                <div class="now_out">现已推出</div>
-                <div class="hot">
-                  <div class="hot_tag">热销商品</div>
-                </div>
-                <div class="lunbotu_right_bottom">
-                  <div class="lunbotu_right_bottom_price">￥28</div>
+                  <div class="lunbotu_right_bottom_price">￥{{ item.price }}</div>
                   <div class="lunbotu_right_bottom_icon"/>
                 </div>
               </div>
             </div>
           </div>
-          <!-- 如果需要分页器 -->
-          <div class="swiper-pagination"/>
-
-          <!-- 如果需要导航按钮 -->
-          <div class="swiper-button-prev  swiper-button-white"/>
-          <div class="swiper-button-next  swiper-button-white"/>
         </div>
 
         <!--左侧栏-->
@@ -136,201 +83,154 @@
           </div>
         </div>
         <div id="lunbotu">
-          <div class="jingxuan">特别优惠
-            <div class="view_all" >
-              <a href="#">浏览所有</a>
+          <div class="jingxuan"><span v-if="!isAll">最新上架</span>
+            <span v-if="isAll">所有游戏</span>
+            <div v-if="!isAll" class="view_all" >
+              <a @click="viewAll()">浏览所有</a>
             </div>
           </div>
+          <!--所有游戏-->
+          <div style="clear: both"/>
+          <div v-if="isAll" style="margin-top: 10px">
+            <div v-for="item in games" :key="item.id" style="width: 940px; height: 69px;background: #16202D;margin-bottom: 10px">
+              <img :src="item.cover" style="float: left" width="184" height="69">
+              <div style="margin-top: 10px;float: left;margin-left: 20px">
+                <span style="color: #C7D5C3;font-size: 16px;display: block; margin-bottom: 10px">{{ item.name }}</span>
+                <span style="color: #acdbe7;font-size: 13px;margin-top: 10px">{{ item.keywords }}</span>
+                <div style="background-image: url(/src/assets/image/icon_platform_win.png);float: left; width: 20px; height: 20px; margin-right: 10px;"/>
+              </div>
+              <div style="float: right;color: #9099A1;">
+                <span style="display: block;margin-top: 30px;margin-right: 30px">￥{{ item.price }}</span>
+              </div>
+            </div>
+            <div style="width: 940px;height: 35px;background: #16202D">
+              <el-pagination
+                :total="pageQuery.total"
+                layout="total, prev, pager, next"
+                background="#16202D"
+                style="float: right;margin-top: 4px"
+                @current-change="currentChange"/>
+            </div>
+            <div class="jingxuan"/>
+          </div>
           <!--轮播图组 -->
-          <div id="swiper-container-second" class="swiper-container" style="height: 390px; float: left;">
+          <div v-if="!isAll" id="swiper-container-second" class="swiper-container" style="height: 390px; float: left;">
 
             <div class="swiper-wrapper">
 
-              <!--轮播图1-->
               <div class="swiper-slide">
-                <div class="tebieyouhuizu">
-                  <img src="/src/assets/欢迎来到%20Steam_files/header(2).jpg" alt="" width="308px;" height="143px;" >
-                  <div class="price_count2"/>
-
+                <div v-for="(item, index) in games" v-if="index < 6" :key="item.id" class="tebieyouhuizu">
+                  <img :src="item.cover" alt="" width="308px;" height="143px;" >
+                  <div style=" width: 119px; height: 34px; float: right; margin-top: 20px; margin-right: 5px;color: #acdbe7; font-size: 20px; line-height: 21px; ">
+                    ￥{{ item.price }}
+                  </div>
                 </div>
-                <div class="tebieyouhuizu">
-                  <img src="/src/assets/欢迎来到%20Steam_files/header(3).jpg" alt="" width="308px;" height="143px;" >
-                  <div class="price_count2"/>
-                </div>
-                <div class="tebieyouhuizu">
-                  <img src="/src/assets/欢迎来到%20Steam_files/header(4).jpg" alt="" width="308px;" height="143px;" >
-                  <div class="price_count2"/>
-                </div>
-                <div class="tebieyouhuizu">
-                  <img src="/src/assets/欢迎来到%20Steam_files/header(5).jpg" alt="" width="308px;" height="143px;" >
-                  <div class="price_count2"/>
-                </div>
-                <div class="tebieyouhuizu">
-                  <img src="/src/assets/欢迎来到%20Steam_files/header(6).jpg" alt="" width="308px;" height="143px;" >
-                  <div class="price_count2"/>
-                </div>
-                <div class="tebieyouhuizu">
-                  <img src="/src/assets/欢迎来到%20Steam_files/header(7).jpg" alt="" width="308px;" height="143px;" >
-                  <div class="price_count2"/>
-                </div>
-
               </div>
-              <!--轮播图2-->
-              <div class="swiper-slide">
-                <div class="lunbotu2_left">
-                  <img src="/src/assets/image/spotlight_image_english.jpg" alt="" height="308px" width="306px" >
+              <div class="swiper-slide" style="background: #1B2838">
+                <div v-for="(item, index) in games" v-if="index >= 6" :key="item.id" class="lunbotu2_left">
+                  <img :src="item.cover" alt="" height="308px" width="306px" >
                   <div class="teyou">
-                    <span class="tebieyouhui">特别优惠
-                    </span><br >
-                    <span class="teyoushijian">免费周末</span>
+                    <span class="tebieyouhui"/><br >
+                    <span class="teyoushijian"/>
                   </div>
-                  <div class="price_count"/>
-                </div>
-                <div class="lunbotu2_left">
-                  <img src="/src/assets/image/spotlight_image_schinese(1).jpg" alt="" height="308px" width="306px" >
-                  <div class="teyou">
-                    <span class="tebieyouhui">特别优惠
-                    </span><br >
-                    <span class="teyoushijian">特惠于周一上午9点止（太平洋时间）</span>
-                  </div>
-
-                </div>
-                <div class="lunbotu2_left">
-                  <img src="/src/assets/image/spotlight_image_schinese.jpg" alt="" height="308px" width="306px" >
-                  <div class="teyou">
-                    <span class="tebieyouhui">特别优惠
-                    </span><br >
-                    <span class="teyoushijian">特惠于周一上午9点止（太平洋时间）</span>
+                  <div style="width: 119px; height: 34px; float: right; margin-top: 20px;margin-right: 20px;color: #acdbe7;">
+                    ￥{{ item.price }}
                   </div>
                 </div>
-
               </div>
-
             </div>
-            <!-- 如果需要分页器 -->
-            <div class="swiper-pagination" style="position: absolute; bottom: -20PX;"/>
 
-            <!-- 如果需要导航按钮 -->
-            <div class="swiper-button-prev  swiper-button-white" style="position: absolute; right:16PX;  top: 193px"/>
-            <div class="swiper-button-next  swiper-button-white" style="position: absolute; right:16PX; top: 193px"/>
           </div>
-
         </div>
       </div>
-    </div>
 
-    <!--底部-->
-    <div style="clear:both"/>
+      <!--底部-->
+      <div style="clear:both"/>
+    </div>
   </div>
 </template>
 
 <script>
+import { getGames } from '@/api/dashboard'
 import Swiper from 'swiper'
 export default {
   name: 'Dashboard',
   data() {
-
+    return {
+      // 是否浏览所有
+      isAll: false,
+      // 推荐轮播图
+      recommends: [],
+      games: [],
+      pageQuery: {
+        total: '',
+        pageSize: 9,
+        pageNum: 1,
+        onSale: true,
+        keywords: ''
+      }
+    }
   },
   created() {
+    this.getNewGames()
   },
   mounted() {
     // 轮播图js
-
     new Swiper('#swiper-container-first', {
 
       direction: 'horizontal',
+      observer: true,
+      observeParents: true,
       loop: true,
-
-      // 如果需要分页器
-      pagination: '.swiper-pagination',
-
-      // 如果需要前进后退按钮
-      nextButton: '.swiper-button-next',
-      prevButton: '.swiper-button-prev',
-      paginationClickable: true,
-      autoplay: 5000
+      autoplay: {
+        delay: 5000,
+        disableOnInteraction: false
+      }
 
     })
     new Swiper('#swiper-container-second', {
 
       direction: 'horizontal',
-      loop: true,
-      effect: 'flip',
-
-      // 如果需要分页器
-      pagination: '.swiper-pagination',
-
-      // 如果需要前进后退按钮
-      nextButton: '.swiper-button-next',
-      prevButton: '.swiper-button-prev',
-      paginationClickable: true
-
+      observer: true,
+      observeParents: true,
+      // loop: true,
+      effect: 'flip'
     })
   },
   methods: {
-    // h1z1图片js
-    h1z1_pic1() {
-      const a = document.getElementById('h1z1_pic')
-      a.src = '/src/assets/image/h1z1/h1z1(1).jpg'
+    // 获取游戏列表，按上架时间排序
+    getNewGames() {
+      getGames(this.pageQuery).then(res => {
+        this.pageQuery.total = res.content.total
+        this.games = res.content.records
+        this.getRecommends()
+      })
     },
-    h1z1_pic2() {
-      const a = document.getElementById('h1z1_pic')
-      a.src = '/src/assets/image/h1z1/h1z1(2).jpg'
+    getAllGames() {
+      getGames(this.pageQuery).then(res => {
+        this.pageQuery.total = res.content.total
+        this.games = res.content.records
+      })
     },
-
-    h1z1_pic3() {
-      const a = document.getElementById('h1z1_pic')
-      a.src = '/src/assets/image/h1z1/h1z1(3).jpg'
+    // 浏览所有
+    viewAll() {
+      this.isAll = true
+      this.pageQuery.pageSize = 15
+      this.getAllGames()
     },
-
-    h1z1_pic4() {
-      const a = document.getElementById('h1z1_pic')
-      a.src = '/src/assets/image/h1z1/h1z1(4).jpg'
+    // 翻页
+    currentChange(val) {
+      this.pageQuery.pageNum = val
+      this.getAllGames()
     },
-
-    // lc图片js
-
-    lc_pic1() {
-      const a = document.getElementById('lc_pic')
-      a.src = '/src/assets/image/lost castle/lc1.jpg'
-    },
-
-    lc_pic2() {
-      const a = document.getElementById('lc_pic')
-      a.src = '/src/assets/image/lost castle/lc2.jpg'
-    },
-
-    lc_pic3() {
-      const a = document.getElementById('lc_pic')
-      a.src = '/src/assets/image/lost castle/lc3.jpg'
-    },
-
-    lc_pic4() {
-      const a = document.getElementById('lc_pic')
-      a.src = '/src/assets/image/lost castle/lc4.jpg'
-    },
-
-    // death coming js
-    dc_pic1() {
-      const a = document.getElementById('dc_pic')
-      a.src = '/src/assets/image/death coming/dc1.jpg'
-    },
-
-    dc_pic2() {
-      const a = document.getElementById('dc_pic')
-      a.src = '/src/assets/image/death coming/dc2.jpg'
-    },
-
-    dc_pic3() {
-      const a = document.getElementById('dc_pic')
-      a.src = '/src/assets/image/death coming/dc3.jpg'
-    },
-
-    dc_pic4() {
-      const a = document.getElementById('dc_pic')
-      a.src = '/src/assets/image/death coming/dc4.jpg'
+    // 获取推荐游戏列表
+    getRecommends() {
+      this.pageQuery.keywords = '推荐'
+      getGames(this.pageQuery).then(res => {
+        this.recommends = res.content.records
+        this.pageQuery.keywords = ''
+      })
     }
-
   }
 }
 </script>
@@ -404,9 +304,7 @@ export default {
   .teyou{ float: left;}
   .tebieyouhui{ margin-top: 12px; font-size: 15px; float: left; color: #FFFFFF; margin-left: 17px;}
   .teyoushijian{ margin-top: -25px; font-size: 12px; float: left; color: #acdbf5; margin-left: 17px;}
-  .price_count{ width: 119px; height: 34px; float: right; margin-top: 20px; background-image: url(/src/assets/image/price_count.jpg); margin-right: 20px;}
   .tebieyouhuizu{ width: 308px; height: 188px; margin-right: 2px; float:left; background-image: url(/src/assets/image/background_spotlight.jpg); margin-bottom: 10px; position: relative;}
   .tebieyouhuizu img{ float: left;}
-  .price_count2{ width: 119px; height: 34px; float: right; margin-top: 5px; background-image: url(/src/assets/image/price_count.jpg); margin-right: 5px;}
 
 </style>

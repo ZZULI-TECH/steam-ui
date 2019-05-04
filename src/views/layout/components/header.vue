@@ -58,13 +58,7 @@
             </li>
             <li role="presentation" class="divider"/>
             <li role="presentation">
-              <a role="menuitem" tabindex="-1" href="#">最近查看过的</a>
-            </li>
-            <li role="presentation">
-              <a role="menuitem" tabindex="-1" href="#">steam鉴赏家</a>
-            </li>
-            <li role="presentation">
-              <a role="menuitem" tabindex="-1" href="#">最近更新</a>
+              <a role="menuitem" tabindex="-1" href="#">全部游戏</a>
             </li>
           </ul>
         </div>
@@ -73,12 +67,6 @@
           <ul id="mygame" onmouseover="search_game_show()" onmouseout="search_game_none()" class="dropdown-menu" role="menu" aria-labelledby="menu1">
             <li role="presentation">
               <a role="menuitem" tabindex="-1" href="#">免费游玩</a>
-            </li>
-            <li role="presentation">
-              <a role="menuitem" tabindex="-1" href="#">抢先体验</a>
-            </li>
-            <li role="presentation">
-              <a role="menuitem" tabindex="-1" href="#">试玩</a>
             </li>
             <li role="presentation" class="divider"/>
             <li role="presentation" class="dropdown-header" style=" color:#2569F8">按类型浏览</li>
@@ -97,24 +85,6 @@
           </ul>
         </div>
         <div class="dropdown" style="float:left;">
-          <button id="menu1" class="btn btn-default dropdown-toggle" style="background:rgb(55, 112, 150); border:none; color: #FFF;font-size:13px; line-height:23px; border-radius:0; border-right:1px solid rgb(43, 85, 113); color:#d9dadd" type="button" data-toggle="dropdown" onmouseover="search_soft_show()" onmouseout="search_soft_none()">软件 <span class="caret"/></button>
-          <ul id="mysoft" onmouseover="search_soft_show()" onmouseout="search_soft_none()" class="dropdown-menu" role="menu" aria-labelledby="menu1">
-            <li role="presentation">
-              <a role="menuitem" tabindex="-1" href="#">软件中心</a>
-            </li>
-            <li role="presentation" class="divider"/>
-            <li role="presentation">
-              <a role="menuitem" tabindex="-1" href="#">动画制作与建模</a>
-            </li>
-            <li role="presentation">
-              <a role="menuitem" tabindex="-1" href="#">实用工具</a>
-            </li>
-            <li role="presentation">
-              <a role="menuitem" tabindex="-1" href="#">教育</a>
-            </li>
-          </ul>
-        </div>
-        <div class="dropdown" style="float:left;">
           <button id="menu1" class="btn btn-default dropdown-toggle" style="background:rgb(55, 112, 150); border:none; color: #FFF;font-size:13px; line-height:23px; border-radius:0; border-right:1px solid rgb(43, 85, 113); color:#d9dadd" type="button" data-toggle="dropdown" onmouseover="search_hardware_show()" onmouseout="search_hardware_none()">硬件 <span class="caret"/></button>
           <ul id="myhardware" onmouseover="search_hardware_show()" onmouseout="search_hardware_none()" class="dropdown-menu" role="menu" aria-labelledby="menu1">
             <li role="presentation">
@@ -127,28 +97,6 @@
               <a role="menuitem" tabindex="-1" href="#">Steam 主机</a>
             </li>
           </ul>
-        </div>
-        <div class="dropdown" style="float:left;">
-          <button id="menu1" class="btn btn-default dropdown-toggle" style="background:rgb(55, 112, 150); border:none; color: #FFF;font-size:13px; line-height:23px; border-radius:0; border-right:1px solid rgb(43, 85, 113); color:#d9dadd" type="button" data-toggle="dropdown" onmouseover="search_video_show()" onmouseout="search_video_none()">视频 <span class="caret"/></button>
-          <ul id="myvideo" onmouseover="search_video_show()" onmouseout="search_video_none()" class="dropdown-menu" role="menu" aria-labelledby="menu1">
-            <li role="presentation">
-              <a role="menuitem" tabindex="-1" href="#">视频中心</a>
-            </li>
-            <li role="presentation" class="divider"/>
-            <li role="presentation" class="dropdown-header" style=" color:#2569F8"> 按类型浏览：</li>
-            <li role="presentation">
-              <a role="menuitem" tabindex="-1" href="#">电影</a>
-            </li>
-            <li role="presentation">
-              <a role="menuitem" tabindex="-1" href="#">章节式</a>
-            </li>
-            <li role="presentation">
-              <a role="menuitem" tabindex="-1" href="#">纪录片</a>
-            </li>
-          </ul>
-        </div>
-        <div class="dropdown" style="float:left;">
-          <button id="menu1" class="btn btn-default dropdown-toggle" style="background:rgb(55, 112, 150); border:none; color: #FFF;font-size:13px; line-height:23px; border-radius:0; border-right:1px solid rgb(43, 85, 113); color:#d9dadd" type="button" data-toggle="dropdown">新闻</button>
         </div>
         <div class="search_bar">
           <input id="search_bar" name="" type="text" placeholder="搜索商店" onfocus="xieti()" onmouseout="zhengti()" >
