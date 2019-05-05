@@ -45,6 +45,8 @@
         </div>
         <div v-if="name !== '' && name !== null && name !== undefined" style="float: left; width:300px; margin-top: 30px; margin-left:10px; color:#b8b6b4; font-size:12px; line-height:21px;">
           <span> 欢迎： {{ name }}</span>
+          |
+          <span><a @click="logout">退出</a></span>
         </div>
       </div>
       <!--搜索框-->
@@ -122,6 +124,14 @@ export default{
     this.name = store.getters.name
   },
   methods: {
+    // 退出登录
+    logout() {
+      this.$store.dispatch('LogOut').then(res => {
+        // this.$router.push('/')
+        window.open('/', '_parent')
+        this.name = store.getters.name
+      })
+    },
     shop_hide() {
       const a = document.getElementById('top_shop')
       a.style.display = 'none'

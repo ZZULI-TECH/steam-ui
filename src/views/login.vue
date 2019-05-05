@@ -28,7 +28,7 @@
             <p style="color:#c6d4df">一个新的免费账户</p>
             <p style=" color:#c6d4df; font-size:12px; font-family:Arial, Helvetica, sans-serif;font-weight:normal">欢迎免费加入及轻松使用。继续创建 Steam 帐户并获取 Steam - 适合 PC 和 Mac 玩家的前沿数字解决方案。</p>
             <br ><br ><br ><br >
-            <button id="login_button_2" type="button" class="btn btn-primary" style=" color:#67c1f5; background-color:#24546f; border-color:#24546f; margin-top:14px;" @onmouseover="login_bg_2()" @onmouseout="login_back_2()">加入 Steam</button>
+            <button id="login_button_2" type="button" class="btn btn-primary" style=" color:#67c1f5; background-color:#24546f; border-color:#24546f; margin-top:14px;" @click="toRegister" @onmouseover="login_bg_2()" @onmouseout="login_back_2()">加入 Steam</button>
           </div>
         </div>
         <div class="container_in_r">
@@ -55,6 +55,7 @@
 <script>
 import { userList } from '@/api/login'
 import store from '@/store'
+import Router from 'vue-router'
 export default {
   data() {
     return {
@@ -64,7 +65,9 @@ export default {
     }
   },
   methods: {
-
+    toRegister() {
+      this.$router.push('/register')
+    },
     test() {
       const query = {
         pageSize: 3,

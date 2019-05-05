@@ -16,10 +16,11 @@ export function userList(query) {
   })
 }
 
-export function logout() {
+export function logout(user) {
   return request({
-    url: '/user/logout',
-    method: 'post'
+    url: '/api/account/logout',
+    method: 'delete',
+    params: user
   })
 }
 
