@@ -121,7 +121,7 @@
 
             <div class="swiper-wrapper">
 
-              <div class="swiper-slide">
+              <div class="swiper-slide" style="background: #1B2838">
                 <div v-for="(item, index) in games" v-if="index < 6" :key="item.id" class="tebieyouhuizu">
                   <img :src="item.cover" alt="" width="308px;" height="143px;" >
                   <div style=" width: 119px; height: 34px; float: right; margin-top: 20px; margin-right: 5px;color: #acdbe7; font-size: 20px; line-height: 21px; ">
