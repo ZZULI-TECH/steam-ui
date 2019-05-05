@@ -27,20 +27,9 @@
           <span><router-link to="/login">登录</router-link></span>
           &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
           <span style="position:relative">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" onclick="language_show()" onmouseout="language_hide()" >语言
+            <a data-toggle="dropdown" onclick="language_show()" onmouseout="language_hide()" @click="$router.push('/register')" >注册
               <span class="caret"/>
             </a>
-            <ul id="language" class="dropdown-menu" style="position:absolute; top: 11px; background:#171a21;" onmouseout="language_hide()" onmouseover="language_show()">
-              <li>
-                <a href="#" style="color: #999;">中文</a>
-              </li>
-              <li>
-                <a href="#" style="color:#999;">English</a>
-              </li>
-              <li>
-                <a href="#" style="color:#999;">日本语</a>
-              </li>
-            </ul>
           </span>
         </div>
         <div v-if="name !== '' && name !== null && name !== undefined" style="float: left; width:300px; margin-top: 30px; margin-left:10px; color:#b8b6b4; font-size:12px; line-height:21px;">
