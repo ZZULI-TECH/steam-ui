@@ -38,6 +38,10 @@ export const constantRouterMap = [
     {
       path: '/register',
       component: () => import('@/views/register')
+    },
+    {
+      path: '/detail',
+      component: () => import('@/views/market/detail')
     }]
   },
   // {
