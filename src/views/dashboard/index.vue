@@ -13,7 +13,7 @@
           <div class="swiper-wrapper">
             <div v-for="(item,index) in recommends" v-if="index < 3" :key="item.id" class="swiper-slide">
               <div class="lunbotu_left">
-                <a href="#"><img id="h1z1_pic" :src="item.cover" width="616" height="353" ></a>
+                <a @click="goDetail(item.id)"><img id="h1z1_pic" :src="item.cover" width="616" height="353" ></a>
               </div>
               <div class="lunbotu_right">
                 <div class="lunbotu_right_top">{{ item.englishName }}</div>
@@ -96,7 +96,7 @@
           <div style="clear: both"/>
           <div v-if="isAll" style="margin-top: 10px">
             <div v-for="item in games" :key="item.id" style="width: 940px; height: 69px;background: #16202D;margin-bottom: 10px">
-              <img :src="item.cover" style="float: left" width="184" height="69">
+              <img :src="item.cover" style="float: left;cursor: pointer" width="184" height="69" @click="goDetail(item.id)">
               <div style="margin-top: 10px;float: left;margin-left: 20px">
                 <span style="color: #C7D5C3;font-size: 16px;display: block; margin-bottom: 10px">{{ item.name }}</span>
                 <span style="color: #acdbe7;font-size: 13px;margin-top: 10px">{{ item.keywords }}</span>
@@ -123,7 +123,7 @@
 
               <div class="swiper-slide" style="background: #1B2838">
                 <div v-for="(item, index) in games" v-if="index < 6" :key="item.id" class="tebieyouhuizu">
-                  <img :src="item.cover" alt="" width="308px;" height="143px;" >
+                  <img :src="item.cover" alt="" width="308px;" height="143px;" style="cursor: pointer" @click="goDetail(item.id)">
                   <div style=" width: 119px; height: 34px; float: right; margin-top: 20px; margin-right: 5px;color: #acdbe7; font-size: 20px; line-height: 21px; ">
                     ￥{{ item.price }}
                   </div>
@@ -131,7 +131,7 @@
               </div>
               <div class="swiper-slide" style="background: #1B2838">
                 <div v-for="(item, index) in games" v-if="index >= 6" :key="item.id" class="lunbotu2_left">
-                  <img :src="item.cover" alt="" height="308px" width="306px" >
+                  <img :src="item.cover" alt="" height="308px" width="306px" style="cursor: pointer" @click="goDetail(item.id)">
                   <div class="teyou">
                     <span class="tebieyouhui"/><br >
                     <span class="teyoushijian"/>
@@ -201,6 +201,13 @@ export default {
     })
   },
   methods: {
+    // 查看游戏请
+    goDetail(gameId) {
+      this.$router.push({
+        path: '/detail',
+        query: { gameId: gameId }
+      })
+    },
     // 获取游戏列表，按上架时间排序
     getNewGames() {
       this.isAll = false
