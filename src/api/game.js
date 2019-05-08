@@ -14,3 +14,10 @@ export function addComment(comment) {
     data: comment
   })
 }
+
+export function checkLib(gameId, userId) {
+  return request({
+    url: `/api/game-library/check/${gameId}/${userId}`,
+    method: 'GET'
+  })
+}

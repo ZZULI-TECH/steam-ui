@@ -3,25 +3,22 @@
     <span style="color: #FFF;height: 46px;font-size: 27px;display: block;margin-bottom: 20px" >{{ game.name }}</span>
     <div style="width: 600px;float: left">
       <!--轮播图-->
-      <div class="swiper-container gallery-top" style="width: 600px;height: 338px; margin-bottom: 10px">
-        <div v-for="item in game.images" :key="item.id" class="swiper-wrapper" style="width: 400px;height: 338px;">
+      <div id="gallery-top" class="swiper-container gallery-top" style="width: 600px;height: 338px; margin-bottom: 10px">
+        <div v-for="item in game.images" :key="item.id" class="swiper-wrapper" style="width: 600px;height: 338px;">
 
-          <!--<img class="swiper-slide" src="/src/assets/image/end/end2.jpg">-->
-          <!--<img class="swiper-slide" src="/src/assets/image/end/end3.jpg">-->
-          <!--<img class="swiper-slide" src="/src/assets/image/end/end4.jpg">-->
-          <img :src="item.imageUrl" class="swiper-slide">
+          <img :src="item.imageUrl" width="600px" height="337px" class="swiper-slide">
 
         </div>
         <!-- Add Arrows -->
         <div class="swiper-button-next swiper-button-white"/>
         <div class="swiper-button-prev swiper-button-white"/>
       </div>
-      <div class="swiper-container gallery-thumbs" style="width: 400px;height: 69px;">
+      <div id="gallery-thumbs" class="swiper-container gallery-thumbs" style="width: 400px;height: 69px;">
         <div v-for="item in game.images" :key="item.id" class="swiper-wrapper">
           <!--<img class="swiper-slide" src="/src/assets/image/end/end7.jpg">-->
           <!--<img class="swiper-slide" src="/src/assets/image/end/end6.jpg">-->
           <!--<img class="swiper-slide" src="/src/assets/image/end/end5.jpg">-->
-          <img :src="item.imageUrl" class="swiper-slide">
+          <img :src="item.imageUrl" width="115px" height="65px" class="swiper-slide" style="margin-right: 10px">
         </div>
       </div>
     </div>
@@ -42,22 +39,22 @@
     </div>
 
     <div style="line-height:20px;	font-size: 14px; color: #acb2b8;margin-top: 30px;">
-      <hr color="#acb2b8" width="616px" >
+      <hr color="#acb2b8" width="940px" >
       <h2>关于这款游戏</h2>
       {{ game.content }}
     </div>
     <div style="clear:both;"/>
-    <hr color="#acb2b8" width="616px" >
-    <div style="line-height:20px; width: 602px;	font-size: 14px; color: #acb2b8;margin-top: 16px;">
+    <hr color="#acb2b8" width="940px" >
+    <div style="line-height:20px; width: 940px;	font-size: 14px; color: #acb2b8;margin-top: 16px;">
       <h2>用户评论</h2><br>
-      <textarea v-model="comment" type="text" class="input" style="width: 600px;height: 60px;display: block" placeholder="您可以畅所欲言，发表评论……" @blur.prevent="checkEmail2()"/>
+      <textarea v-model="comment" type="text" class="input" style="width: 940px;height: 60px;display: block" placeholder="您可以畅所欲言，发表评论……" @blur.prevent="checkEmail2()"/>
       <div style="background: #8caf0b;color: #FFF;float: right;width: 110px;height: 30px; cursor: pointer; text-align: center;padding-top: 5px;margin-right: 10px" @click="addComment">发表</div>
     </div>
     <div v-for="item in game.comments" :key="item.id" style="width: 600px;margin-top: 60px">
-      <div style="width: 600px;margin-bottom: 20px">
+      <div style="width: 940px;margin-bottom: 20px">
         <div style="width: 200px; float: left">
           <img src="/src/assets/image/end/end5.jpg" width="40px" height="40px" style="margin-top: 10px">
-          <span style="color: #C1DBF4;font-size: 12px;margin-left: 10px;">{{ item.userName }}</span>
+          <span style="color: #C1DBF4;font-size: 12px;margin-left: 10px;">{{ item.uid }}</span>
         </div>
         <div>
           <span style="color: #566473; font-size: 13px;display: block">发布于：{{ item.gmtCreate }}</span>
@@ -71,7 +68,8 @@
 
 <script>
 import Swiper from 'swiper'
-import { getGameById, addComment } from '@/api/game'
+import store from '@/store'
+import { getGameById, addComment, checkLib } from '@/api/game'
 export default {
   data() {
     return {
@@ -96,7 +94,7 @@ export default {
     }
   },
   mounted() {
-    const galleryTop = new Swiper('.gallery-top', {
+    const galleryTop = new Swiper('#gallery-top', {
       spaceBetween: 10,
       loop: true,
 
@@ -106,7 +104,7 @@ export default {
         prevEl: '.swiper-button-prev'
       }
     })
-    const galleryThumbs = new Swiper('.gallery-thumbs', {
+    const galleryThumbs = new Swiper('#gallery-thumbs', {
       spaceBetween: 10,
       slidesPerView: 3,
       touchRatio: 1,
@@ -132,8 +130,15 @@ export default {
     },
     // 新增评论
     addComment() {
-      addComment({ comment: this.comment }).then(res => {
-        this.getGameById()
+      checkLib(this.game.id, store.getters.userId).then(res => {
+        if (res.content !== null) {
+          addComment({ content: this.comment, uid: store.getters.userId, gameId: this.game.id }).then(res => {
+            this.comment = ''
+            this.getGameById()
+          })
+        } else {
+          alert('成功购买游戏后即可发表评论')
+        }
       })
     }
   }

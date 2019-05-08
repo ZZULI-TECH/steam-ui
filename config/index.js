@@ -10,17 +10,6 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
-      /**
-       * 适用于本地开发
-       *
-       * 1.不经过Gateway(default)
-       *  target: 服务地址
-       *  pathRewrite: 保留
-       *
-       * 2.经过Gateway
-       *  target: Gateway地址
-       *  pathRewrite: 去除
-       */
       '/api': {
         target: 'http://localhost:8080',
         changeOrigin: true,
@@ -30,7 +19,7 @@ module.exports = {
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST
-    port: 9020, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
+    port: 9090, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
     autoOpenBrowser: true,
     errorOverlay: true,
     notifyOnErrors: false,
