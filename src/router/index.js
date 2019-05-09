@@ -42,6 +42,14 @@ export const constantRouterMap = [
     {
       path: '/detail',
       component: () => import('@/views/market/detail')
+    },
+    {
+      path: '/car',
+      component: () => import('@/views/market/car')
+    },
+    {
+      path: '/lib',
+      component: () => import('@/views/pcenter/lib')
     }]
   },
   // {

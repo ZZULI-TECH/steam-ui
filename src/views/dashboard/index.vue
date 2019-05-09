@@ -166,7 +166,7 @@ export default {
       recommends: [],
       games: [],
       pageQuery: {
-        total: '',
+        total: null,
         pageSize: 9,
         pageNum: 1,
         onSale: true,
@@ -214,14 +214,14 @@ export default {
       this.pageQuery.pageSize = 9
       this.pageQuery.pageNum = 1
       getGames(this.pageQuery).then(res => {
-        this.pageQuery.total = res.content.total
+        this.pageQuery.total = parseInt(res.content.total)
         this.games = res.content.records
         this.getRecommends()
       })
     },
     getAllGames() {
       getGames(this.pageQuery).then(res => {
-        this.pageQuery.total = res.content.total
+        this.pageQuery.total = parseInt(res.content.total)
         this.games = res.content.records
       })
     },

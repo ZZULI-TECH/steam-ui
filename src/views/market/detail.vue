@@ -30,11 +30,25 @@
       <span style="color: #556772;font-size: 13px">游戏标签：</span><span style="color: #8F98A0;font-size: 13px">{{ game.keywords }}</span><br>
     </div>
     <div style="clear: both"/>
-    <div style="width:616px; background:#414d59; height:83px; position:relative; padding-top:15px; margin-top: 30px">
-      <h1 style="font-size:21px; color: #ffffff; text-indent:15px">购买 {{ game.name }}</h1>
-      <div style=" width: 162px; height: 32px; background: #000; position: absolute; left: 442px; top: 63px; padding: 1px; font-size: 13px; line-height: 32px; text-indent: 10px;">
+    <div v-if="!isHave && !inCar" style="width:940px; background:#414d59; height:83px; position:relative; padding-top:15px; margin-top: 30px">
+      <h1 style="font-size:21px; color: #ffffff; text-indent:15px">购买   {{ game.name }}</h1>
+      <div style=" width: 162px; height: 32px; background: #000; position: absolute; left: 742px; top: 63px; padding: 1px; font-size: 13px; line-height: 32px; text-indent: 10px;">
         <span style=" font-size:13px; margin-left:-2px;color: #8F98A0;">￥{{ game.price }}</span>
-        <div style="background: #8caf0b;color: #FFF;float: right;width: 110px;cursor: pointer;">添加至购物车</div>
+        <div style="background: #8caf0b;color: #FFF;float: right;width: 110px;cursor: pointer;" @click="addCar">添加至购物车</div>
+      </div>
+    </div>
+
+    <div v-if="isHave" style="width:940px; background:#414d59; height:83px; position:relative; padding-top:15px; margin-top: 30px">
+      <h1 style="font-size:21px; color: #ffffff; text-indent:15px">您的游戏库中已经拥有  {{ game.name }}</h1>
+      <div style=" width: 110px; height: 32px; background: #000; position: absolute; left: 780px; top: 63px; padding: 1px; font-size: 13px; line-height: 32px; text-indent: 10px;">
+        <div style="background: #8caf0b;color: #FFF;float: right;width: 110px;cursor: pointer;text-align: center;" @click="goLib">前往查看</div>
+      </div>
+    </div>
+
+    <div v-if="inCar" style="width:940px; background:#414d59; height:83px; position:relative; padding-top:15px; margin-top: 30px">
+      <h1 style="font-size:21px; color: #ffffff; text-indent:15px">您已经将  {{ game.name }} 添加至购物车 </h1>
+      <div style=" width: 110px; height: 32px; background: #000; position: absolute; left: 780px; top: 63px; padding: 1px; font-size: 13px; line-height: 32px; text-indent: 10px;">
+        <div style="background: #8caf0b;color: #FFF;float: right;width: 110px;cursor: pointer;text-align: center;" @click="goCar">前往查看</div>
       </div>
     </div>
 
@@ -70,6 +84,7 @@
 import Swiper from 'swiper'
 import store from '@/store'
 import { getGameById, addComment, checkLib } from '@/api/game'
+import { addCar, checkCar } from '@/api/car'
 export default {
   data() {
     return {
@@ -90,7 +105,11 @@ export default {
         gmtCreate: '',
         images: [],
         comments: []
-      }
+      },
+      // 是否在库中
+      isHave: false,
+      // 是否在购物车中
+      inCar: false
     }
   },
   mounted() {
@@ -119,6 +138,17 @@ export default {
     this.game.id = this.$route.query.gameId
     console.log(this.game.id)
     this.getGameById()
+    // 检查是否已经添加至游戏库
+    checkLib(this.game.id, store.getters.userId).then(res => {
+      if (res.content !== null) {
+        this.isHave = true
+      }
+    })
+    checkCar(store.getters.userId, this.game.id).then(res => {
+      if (res.content !== null) {
+        this.inCar = true
+      }
+    })
   },
   methods: {
     // 根据id获取游戏信息
@@ -130,8 +160,8 @@ export default {
     },
     // 新增评论
     addComment() {
-      checkLib(this.game.id, store.getters.userId).then(res => {
-        if (res.content !== null) {
+      if (this.comment !== null && this.comment !== '') {
+        if (this.isHave) {
           addComment({ content: this.comment, uid: store.getters.userId, gameId: this.game.id }).then(res => {
             this.comment = ''
             this.getGameById()
@@ -139,7 +169,22 @@ export default {
         } else {
           alert('成功购买游戏后即可发表评论')
         }
+      } else {
+        alert('评论不能为空')
+      }
+    },
+    // 添加至购物车
+    addCar() {
+      addCar(store.getters.userId, { 'gameId': this.game.id }).then(res => {
+        this.$router.push('/car')
       })
+    },
+    // TODO 查看游戏库
+    goLib() {
+      this.$router.push('/lib')
+    },
+    goCar() {
+      this.$router.push('/car')
     }
   }
 }
