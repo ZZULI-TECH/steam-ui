@@ -1,3 +1,4 @@
+<!--注册-->
 <template>
   <div style="color: #CAD7D8;margin-top: 70px">
     <div style="width: 920px; margin: 0 auto">

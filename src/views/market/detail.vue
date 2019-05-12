@@ -1,3 +1,4 @@
+<!--详情-->
 <template>
   <div style="margin: 70px auto 0; margin-top: 70px;width: 940px;">
     <span style="color: #FFF;height: 46px;font-size: 27px;display: block;margin-bottom: 20px" >{{ game.name }}</span>

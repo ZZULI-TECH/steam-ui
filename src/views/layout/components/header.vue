@@ -1,3 +1,4 @@
+<!--头部-->
 <template>
   <div id="globe_header">
     <div class="content">

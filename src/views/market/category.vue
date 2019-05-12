@@ -1,11 +1,10 @@
-<!--游戏库-->
+<!--分类浏览-->
 <template>
-  <!--TODO 游戏库-->
 </template>
 
 <script>
 export default {
-  name: 'Lib'
+  name: 'Category'
 }
 </script>
 
