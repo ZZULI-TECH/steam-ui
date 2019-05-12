@@ -7,3 +7,11 @@ export function getGames(query) {
     params: query
   })
 }
+
+export function searchGames(query) {
+  return request({
+    url: '/api/game/search',
+    method: 'get',
+    params: query
+  })
+}

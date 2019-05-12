@@ -8,40 +8,9 @@
       <div id="lunbotu">
 
         <div style="font-size: 48px; text-transform: none; padding-top: 20px;letter-spacing: 0px;color: #FFF">
-          Steam 上的 {{ category }} 游戏
+          搜索 "{{ category }}" 的结果
         </div>
-        <!--轮播图组 -->
-        <div id="swiper-container-first" class="swiper-container">
-          <!--轮播图1-->
-          <div class="swiper-wrapper">
-            <div v-for="(item,index) in recommends" v-if="index < 3" :key="item.id" class="swiper-slide">
-              <div class="lunbotu_left">
-                <a @click="goDetail(item.id)"><img id="h1z1_pic" :src="item.cover" width="616" height="353" ></a>
-              </div>
-              <div class="lunbotu_right">
-                <div class="lunbotu_right_top">{{ item.englishName }}</div>
-                <div
-                  style="width:318px; height:150px; float:left;margin-left: 8px;
-                 font-size: 16px; color: #F3F3F4;letter-spacing: 1px;text-indent: 20px;text-align: left">
-                  {{ item.remark }}
-                </div>
-                <div class="now_out">现已推出抢先体验</div>
-                <div class="hot">
-                  <div class="hot_tag">热销商品</div>
-                </div>
-                <div class="lunbotu_right_bottom">
-                  <div class="lunbotu_right_bottom_price">￥{{ item.price }}</div>
-                  <div class="lunbotu_right_bottom_icon"/>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
         <div id="lunbotu">
-          <div class="jingxuan">
-            <span>所有 {{ category }} 游戏</span>
-          </div>
           <!--所有游戏-->
           <div style="clear: both"/>
           <div style="margin-top: 10px">
@@ -76,14 +45,12 @@
 </template>
 
 <script>
-import { getGames } from '@/api/dashboard'
+import { searchGames } from '@/api/dashboard'
 import Swiper from 'swiper'
 export default {
   name: 'Dashboard',
   data() {
     return {
-      // 推荐轮播图
-      recommends: [],
       games: [],
       pageQuery: {
         total: null,
@@ -91,7 +58,8 @@ export default {
         pageNum: 1,
         onSale: true,
         keywords: '',
-        price: ''
+        price: '',
+        name: ''
       },
       // 类型
       category: ''
@@ -99,11 +67,8 @@ export default {
   },
   created() {
     this.category = this.$route.query.keywords
-    if (this.$route.query.keywords !== '免费游玩') {
-      this.pageQuery.keywords = this.$route.query.keywords
-    } else {
-      this.pageQuery.price = '0'
-    }
+    this.pageQuery.keywords = this.$route.query.keywords
+    this.pageQuery.name = this.$route.query.keywords
     this.getAllGames()
   },
   mounted() {
@@ -130,29 +95,17 @@ export default {
       })
     },
     getAllGames() {
-      getGames(this.pageQuery).then(res => {
+      searchGames(this.pageQuery).then(res => {
         this.pageQuery.total = parseInt(res.content.total)
         this.games = res.content.records
-        this.getRecommends()
         console.log('-------------')
         console.log(this.games)
       })
-    },
-    // 浏览所有
-    viewAll() {
-      this.pageQuery.pageSize = 15
-      this.getAllGames()
     },
     // 翻页
     currentChange(val) {
       this.pageQuery.pageNum = val
       this.getAllGames()
-    },
-    // 获取推荐游戏列表
-    getRecommends() {
-      getGames(this.pageQuery).then(res => {
-        this.recommends = res.content.records
-      })
     }
   }
 }

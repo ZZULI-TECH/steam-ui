@@ -1,4 +1,3 @@
-<!--头部-->
 <template>
   <div id="globe_header">
     <div class="content">
@@ -46,7 +45,7 @@
           <button id="menu1" class="btn btn-default dropdown-toggle" style="background:rgb(55, 112, 150); border:none; color: #FFF;font-size:13px; line-height:23px; border-radius:0; border-right:1px solid rgb(43, 85, 113); color:#d9dadd; position:relative;" type="button" data-toggle="dropdown" onmouseover="search_shop_show()" onmouseout="search_shop_none()">您的商店 <span class="caret"/></button>
           <ul id="myshop" onmouseover="search_shop_show()" onmouseout="search_shop_none()" class="dropdown-menu" role="menu" aria-labelledby="menu1">
             <li role="presentation">
-              <a role="menuitem" tabindex="-1" href="#">商店主页</a>
+              <a role="menuitem" tabindex="-1" href="/">商店主页</a>
             </li>
             <li role="presentation" class="divider"/>
             <li role="presentation">
@@ -58,21 +57,21 @@
           <button id="menu1" class="btn btn-default dropdown-toggle" style="background:rgb(55, 112, 150); border:none; color: #FFF;font-size:13px; line-height:23px; border-radius:0; border-right:1px solid rgb(43, 85, 113); color:#d9dadd" type="button" data-toggle="dropdown" onmouseover="search_game_show()" onmouseout="search_game_none()">游戏 <span class="caret"/></button>
           <ul id="mygame" onmouseover="search_game_show()" onmouseout="search_game_none()" class="dropdown-menu" role="menu" aria-labelledby="menu1">
             <li role="presentation">
-              <a role="menuitem" tabindex="-1" href="#">免费游玩</a>
+              <a role="menuitem" tabindex="-1" href="/category?keywords=免费游玩">免费游玩</a>
             </li>
             <li role="presentation" class="divider"/>
             <li role="presentation" class="dropdown-header" style=" color:#2569F8">按类型浏览</li>
             <li role="presentation">
-              <a role="menuitem" tabindex="-1" href="#">休闲</a>
+              <a role="menuitem" tabindex="-1" href="/category?keywords=休闲">休闲</a>
             </li>
             <li role="presentation">
-              <a role="menuitem" tabindex="-1" href="#">体育</a>
+              <a role="menuitem" tabindex="-1" href="/category?keywords=体育">体育</a>
             </li>
             <li role="presentation">
-              <a role="menuitem" tabindex="-1" href="#">冒险</a>
+              <a role="menuitem" tabindex="-1" href="/category?keywords=冒险">冒险</a>
             </li>
             <li role="presentation">
-              <a role="menuitem" tabindex="-1" href="#">动作</a>
+              <a role="menuitem" tabindex="-1" href="/category?keywords=动作">动作</a>
             </li>
           </ul>
         </div>
@@ -91,8 +90,8 @@
           </ul>
         </div>
         <div class="search_bar">
-          <input id="search_bar" name="" type="text" placeholder="搜索商店" onfocus="xieti()" onmouseout="zhengti()" >
-          <a href="#"><img style=" border-radius:3px; position: absolute; right: 6px; top: 5px;" src="/src/assets/image/search.jpg" width="25" height="25" ></a>
+          <input id="search_bar" v-model="search" name="" type="text" placeholder="搜索商店" onfocus="xieti()" onmouseout="zhengti()" @keyup.enter="searchGames" >
+          <a @click="searchGames"><img style=" border-radius:3px; position: absolute; right: 6px; top: 5px;" src="/src/assets/image/search.jpg" width="25" height="25" ></a>
         </div>
       </div>
 
@@ -107,13 +106,17 @@ export default{
   name: 'Header',
   data() {
     return {
-      name: ''
+      name: '',
+      search: ''
     }
   },
   created() {
     this.name = store.getters.name
   },
   methods: {
+    searchGames() {
+      window.open('/search?keywords=' + this.search, '_parent')
+    },
     // 退出登录
     logout() {
       this.$store.dispatch('LogOut').then(res => {

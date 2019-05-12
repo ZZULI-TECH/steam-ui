@@ -45,40 +45,37 @@
             <ul>
               <li class="left_title">按类型浏览</li>
               <li class="left_page">
-                <a href="#">免费游玩</a>
+                <a @click="$router.push('/category?keywords=免费游玩')">免费游玩</a>
               </li>
               <li class="left_page">
-                <a href="#">抢先体验</a>
+                <a @click="$router.push('/category?keywords=休闲')">休闲</a>
               </li>
               <li class="left_page">
-                <a href="#">休闲</a>
+                <a @click="$router.push('/category?keywords=体育')">体育</a>
               </li>
               <li class="left_page">
-                <a href="#">体育</a>
+                <a @click="$router.push('/category?keywords=冒险')">冒险</a>
               </li>
               <li class="left_page">
-                <a href="#">冒险</a>
+                <a @click="$router.push('/category?keywords=动作')">动作</a>
               </li>
               <li class="left_page">
-                <a href="#">动作</a>
+                <a @click="$router.push('/category?keywords=大型多人在线')">大型多人在线</a>
               </li>
               <li class="left_page">
-                <a href="#">大型多人在线</a>
+                <a @click="$router.push('/category?keywords=模拟')">模拟</a>
               </li>
               <li class="left_page">
-                <a href="#">模拟</a>
+                <a @click="$router.push('/category?keywords=独立')">独立</a>
               </li>
               <li class="left_page">
-                <a href="#">独立</a>
+                <a @click="$router.push('/category?keywords=竞速')">竞速</a>
               </li>
               <li class="left_page">
-                <a href="#">竞速</a>
+                <a @click="$router.push('/category?keywords=策略')">策略</a>
               </li>
               <li class="left_page">
-                <a href="#">策略</a>
-              </li>
-              <li class="left_page">
-                <a href="#">角色扮演</a>
+                <a @click="$router.push('/category?keywords=角色扮演')">角色扮演</a>
               </li>
             </ul>
           </div>
