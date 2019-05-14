@@ -60,11 +60,10 @@ export default {
     },
     // 结算 添加订单
     buyAll() {
-      this.cars.forEach(car => {
-        carRemove(car.id, store.getters.userId)
-      })
-      // TODO 只添加了订单流水用户id 没有添加相关游戏(多个游戏时好用，单个游戏不好用)
       addOrderFromCar(store.getters.userId).then(res => {
+        this.cars.forEach(car => {
+          carRemove(car.id, store.getters.userId)
+        })
         alert('订单添加成功')
         this.getCar()
       })

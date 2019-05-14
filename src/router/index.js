@@ -43,7 +43,16 @@ export const constantRouterMap = [
     {
       path: '/search',
       component: () => import('@/views/market/search')
-    }]
+    },
+    {
+      path: '/setInfo',
+      component: () => import('@/views/pcenter/setInfo')
+    },
+    {
+      path: '/order',
+      component: () => import('@/views/pcenter/order')
+    }
+    ]
   },
   // {
   //   path: '/header',
