@@ -61,12 +61,13 @@ export default {
     // 结算 添加订单
     buyAll() {
       addOrderFromCar(store.getters.userId).then(res => {
-        this.cars.forEach(car => {
-          carRemove(car.id, store.getters.userId)
-        })
+        // this.cars.forEach(car => {
+        //   carRemove(car.id, store.getters.userId)
+        // })
         // alert('订单添加成功')
         // alert(res.content)
-        window.location('localhost:8080/api/alipay/pay/' + res.content)
+        
+        window.location.href = 'http://localhost:8080/alipay/pay/' + res.content
         // pay(res.content)
         this.getCar()
       })
