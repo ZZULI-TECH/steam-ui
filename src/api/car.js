@@ -28,3 +28,10 @@ export function checkCar(userId, gameId) {
     method: 'GET'
   })
 }
+
+export function pay(orderId) {
+  return request({
+    url: `/api/alipay/pay/${orderId}`,
+    method: 'GET'
+  })
+}

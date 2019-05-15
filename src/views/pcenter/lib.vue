@@ -2,9 +2,23 @@
 <!--分类浏览-->
 <template>
   <div>
-    <!--
-	顶部导航栏结束   身体部分开始
--->
+    <!--左侧栏-->
+    <div class="left_tag" style="font-size: 16px">
+      <div class="steam_tag">
+        <ul>
+          <li class="left_title" style="margin-bottom: 30px">个人中心</li>
+          <li class="left_page" style="margin-bottom: 30px">
+            <a @click="$router.push('/setInfo')">基本信息修改</a>
+          </li>
+          <li class="left_page" style="margin-bottom: 30px">
+            <a @click="$router.push('/order')">历史订单</a>
+          </li>
+          <li class="left_page">
+            <a @click="$router.push('/lib')">我的游戏库</a>
+          </li>
+        </ul>
+      </div>
+    </div>
     <div id="home_page">
       <div id="lunbotu">
 
@@ -163,7 +177,7 @@ export default {
   .lunbotu_right_bottom{ width: 324px; height:21px; float: left;  margin-top: 15px;}
   .lunbotu_right_bottom_price{ width: 52px; height: 21px; float: left; margin-left:10px ; color: #acdbe7; font-size: 9px; line-height: 21px;}
   .lunbotu_right_bottom_icon{ background-image: url(/src/assets/image/icon_platform_win.png); float: right; width: 20px; height: 20px; margin-right: 10px;}
-  .left_tag{ width: 213px; height: 975px; position: absolute; left: -240px;top: -70px;}
+  .left_tag{ width: 213px; height: 975px; position: absolute; left: calc((100vw - 940px)/2 - 213px);top: 180px;}
   .steam_card{ width: 213px; height: 119px;}
   .steam_tag{ width: 213px; height: 856px;}
   .steam_tag ul{ margin-top: 6px; margin-bottom: 12px;}

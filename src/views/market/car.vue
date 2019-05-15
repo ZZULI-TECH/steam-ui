@@ -27,7 +27,7 @@
 
 <script>
 import store from '@/store'
-import { listCar, carRemove } from '@/api/car'
+import { listCar, carRemove, pay } from '@/api/car'
 import { addOrderFromCar } from '@/api/order'
 export default {
   data() {
@@ -64,7 +64,10 @@ export default {
         this.cars.forEach(car => {
           carRemove(car.id, store.getters.userId)
         })
-        alert('订单添加成功')
+        // alert('订单添加成功')
+        // alert(res.content)
+        window.location('localhost:8080/api/alipay/pay/' + res.content)
+        // pay(res.content)
         this.getCar()
       })
     }

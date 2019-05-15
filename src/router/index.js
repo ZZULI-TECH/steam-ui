@@ -51,6 +51,10 @@ export const constantRouterMap = [
     {
       path: '/order',
       component: () => import('@/views/pcenter/order')
+    },
+    {
+      path: '/msg',
+      component: () => import('@/views/pcenter/message')
     }
     ]
   },

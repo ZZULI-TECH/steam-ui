@@ -18,7 +18,7 @@
           </ul>
         </span>
         <a href="#">关于</a>
-        <a href="window.close()">客服</a>
+        <a href="/msg">客服</a>
       </div>
 
       <div id="globe_actions">
@@ -33,7 +33,7 @@
           </span>
         </div>
         <div v-if="name !== '' && name !== null && name !== undefined" style="float: left; width:300px; margin-top: 30px; margin-left:10px; color:#b8b6b4; font-size:12px; line-height:21px;">
-          <span> 欢迎： {{ name }}</span>
+          <span style="cursor: pointer" onselectstart="return false" @click="$router.push('/setInfo')"> 欢迎： {{ name }}</span>
           |
           <span><a @click="logout">退出</a></span>
         </div>
@@ -49,7 +49,7 @@
             </li>
             <li role="presentation" class="divider"/>
             <li role="presentation">
-              <a role="menuitem" tabindex="-1" href="#">全部游戏</a>
+              <a role="menuitem" tabindex="-1" href="/lib">我的游戏库</a>
             </li>
           </ul>
         </div>
