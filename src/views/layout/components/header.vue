@@ -10,15 +10,10 @@
         </span>
       </div>
       <div class="supernav_cotainer">
-        <span style="position:relative"> <a href="http://store.steampowered.com/" class="dropdown-toggle" data-toggle="dropdown" @onmouseover="shop_show()" @onmouseout="shop_hide()" >商店</a>
-          <ul id="top_shop" class="dropdown-menu" style="position:absolute; left:-5px; top:15px; background:#171a21;" @onmouseout="shop_hide()" @onmouseover="shop_show()" >
-            <li><a href="#" style="color: #999;">精选</a></li>
-            <li><a href="#" style="color:#999;">探索</a></li>
-            <li><a href="#" style="color:#999;">愿望单</a></li>
-          </ul>
+        <span style="position:relative"> <a href="http://store.steampowered.com/" data-toggle="dropdown" @onmouseover="shop_show()" @onmouseout="shop_hide()" @click="$router.push('/')" >商店</a>
         </span>
-        <a href="#">关于</a>
-        <a href="/msg">客服</a>
+        <!--<a href="#">关于</a>-->
+        <a href="/msg" style="margin-left: 30px">客服</a>
       </div>
 
       <div id="globe_actions">
@@ -72,20 +67,6 @@
             </li>
             <li role="presentation">
               <a role="menuitem" tabindex="-1" href="/category?keywords=动作">动作</a>
-            </li>
-          </ul>
-        </div>
-        <div class="dropdown" style="float:left;">
-          <button id="menu1" class="btn btn-default dropdown-toggle" style="background:rgb(55, 112, 150); border:none; color: #FFF;font-size:13px; line-height:23px; border-radius:0; border-right:1px solid rgb(43, 85, 113); color:#d9dadd" type="button" data-toggle="dropdown" onmouseover="search_hardware_show()" onmouseout="search_hardware_none()">硬件 <span class="caret"/></button>
-          <ul id="myhardware" onmouseover="search_hardware_show()" onmouseout="search_hardware_none()" class="dropdown-menu" role="menu" aria-labelledby="menu1">
-            <li role="presentation">
-              <a role="menuitem" tabindex="-1" href="#">Steam 控制器</a>
-            </li>
-            <li role="presentation">
-              <a role="menuitem" tabindex="-1" href="#">Steam 流式盒</a>
-            </li>
-            <li role="presentation">
-              <a role="menuitem" tabindex="-1" href="#">Steam 主机</a>
             </li>
           </ul>
         </div>

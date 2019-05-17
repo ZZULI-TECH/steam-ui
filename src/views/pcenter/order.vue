@@ -22,41 +22,92 @@
     <el-table
       :data="orders"
       style="width: 940px;margin: 0 auto">
+      <el-table-column type="expand">
+        <template slot-scope="props">
+          <div v-for="item in props.row.orderGames" :key="item.id" style="width: 870px; height: 69px;margin-bottom: 10px">
+            <img :src="item.gameCover" style="float: left;cursor: pointer;margin-right: 100px" width="184" height="69" @click="goDetail(item.id)">
+            <div style="margin-top: 20px;float: left;margin-left: 20px;width: 250px">
+              <span style="font-size: 16px;display: block; margin-bottom: -10px">{{ item.gameName }}</span>
+            </div>
+            <div style="float: left;margin-left: 80px">
+              <span style="display: block;margin-top: 20px;margin-right: 30px">￥{{ item.costPrice }}</span>
+            </div>
+          </div>
+        </template>
+      </el-table-column>
       <el-table-column
         type="index"
         label="序号"
         width="60"/>
       <el-table-column
-        prop="name"
-        label="商品"
-        width="500">
-        <template itemscope>
-          <!-- TODO 订单对应的游戏列表-->
-        </template>
-      </el-table-column>
+        prop="id"
+        label="订单号"
+        width="200"/>
       <el-table-column
-        prop="address"
-        label="地址"/>
+        prop="orderSn"
+        label="流水号"
+        width="330"/>
+      <el-table-column
+        prop="gmtCreate"
+        label="下单时间"/>
+      <el-table-column
+        prop="orderAmount"
+        label="付款金额(￥)"/>
+      <el-table-column
+        prop="stateCN"
+        label="订单状态"/>
     </el-table>
+    <div style="width: 800px;height: 35px;">
+      <el-pagination
+        :total="query.total"
+        layout="total, prev, pager, next"
+        background="#16202D"
+        style="margin-top: 4px"
+        @current-change="currentChange"/>
+    </div>
   </div>
 </template>
 <script>
 import { orderList } from '@/api/order'
+import store from '@/store'
 export default {
   data() {
     return {
-      orders: []
+      orders: [],
+      query: {
+        userId: store.getters.userId,
+        pageNum: 1,
+        pageSize: 10,
+        orderStatus: null,
+        total: 10
+      }
       // TODO 订单对应的游戏列表
     }
   },
   created() {
+    this.orderList()
     // TODO
   },
   methods: {
     orderList() {
-      orderList().then(res => {
+      orderList(this.query.userId, this.query.pageNum, this.query.pageSize, this.query.orderStatus).then(res => {
         // TODO orders
+        this.orders = res.content.records
+        this.query.total = parseInt(res.content.total)
+        this.orders.forEach((order, index) => {
+          if (order.orderStatus === 1 || order.orderStatus === 2) {
+            this.$set(this.orders[index], 'stateCN', '等待发货')
+          } else if (order.orderStatus === 3) {
+            this.$set(this.orders[index], 'stateCN', '已发货')
+          } else if (order.orderStatus === 4) {
+            this.$set(this.orders[index], 'stateCN', '已完成')
+          }
+        })
       })
+    },
+    currentChange(pageNum) {
+      this.query.pageNum = pageNum
+      this.orderList()
     }
   }
 }
