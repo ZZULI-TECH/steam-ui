@@ -38,7 +38,9 @@
                 <div style="background-image: url(/src/assets/image/icon_platform_win.png);float: left; width: 20px; height: 20px; margin-right: 10px;"/>
               </div>
               <div style="float: right;color: #2f89bc;">
-                <a style="display: block;margin-top: 45px;text-decoration: underline; margin-right: 30px" @click="download(item.downloadUrl)">下载</a>
+                <a v-if="item.orderState === 4" style="display: block;margin-top: 45px;text-decoration: underline; margin-right: 30px" @click="download(item.downloadUrl)">下载</a>
+                <span v-if="item.orderState === 1 || item.orderState === 2" style="display: block;margin-top: 45px;margin-right: 30px" >未发货</span>
+                <a v-if="item.orderState === 3" style="display: block;margin-top: 45px;text-decoration: underline; margin-right: 30px" href="/order" >已发货(点击前往订单收货)</a>
               </div>
             </div>
             <div style="width: 940px;height: 35px;background: #16202D">
@@ -61,7 +63,7 @@
 </template>
 
 <script>
-import { libList } from '@/api/lib'
+import { libList, getOrderGame } from '@/api/lib'
 // import { getGames } from '@/api/dashboard'
 import store from '@/store'
 
@@ -72,6 +74,8 @@ export default {
       // 推荐轮播图
       recommends: [],
       games: [],
+      // 订单状态
+      orderState: null,
       pageQuery: {
         total: null,
         pageSize: 9,
@@ -107,7 +111,12 @@ export default {
       // getGames(this.pageQuery).then(res => {
         this.pageQuery.total = parseInt(res.content.total)
         this.games = res.content.records
-        this.getRecommends()
+        this.games.forEach((item, index) => {
+          getOrderGame(store.getters.userId, item.gameId).then(res2 => {
+            this.$set(this.games[index], 'orderState', res2.content.orderStatus)
+            this.$set(this.games[index], 'orderId', res2.content.id)
+          })
+        })
         console.log('-------------')
         console.log(this.games)
       })

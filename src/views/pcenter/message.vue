@@ -30,7 +30,12 @@ export default {
         msg: this.msg
       }
       addMsg(msg).then(res => {
-        alert('感谢您的反馈，我们会尽快回复')
+        this.$notify({
+          title: '成功',
+          message: '感谢您的反馈，我们会尽快通过邮件回复您',
+          type: 'success'
+        })
+        this.$router.push('/')
       })
     }
   }

@@ -6,4 +6,17 @@ export function orderList(userId, pageNum, pageSize, orderStatus) {
     method: 'GET'
   })
 }
-// TODO orderList
+export function addOrderFromCar(userId) {
+  return request({
+    url: `/api/order/createOrderFromCart/${userId}`,
+    method: 'POST'
+  })
+}
+
+export function update(row) {
+  return request({
+    url: '/api/order/update',
+    method: 'post',
+    data: row
+  })
+}

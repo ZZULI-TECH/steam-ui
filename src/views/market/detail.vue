@@ -165,13 +165,26 @@ export default {
         if (this.isHave) {
           addComment({ content: this.comment, uid: store.getters.userId, gameId: this.game.id }).then(res => {
             this.comment = ''
+            this.$notify({
+              title: '温馨提示',
+              message: '成功发表评论',
+              type: 'success'
+            })
             this.getGameById()
           })
         } else {
-          alert('成功购买游戏后即可发表评论')
+          this.$notify({
+            title: '温馨提示',
+            message: '成功购买游戏后即可发表评论',
+            type: 'warning'
+          })
         }
       } else {
-        alert('评论不能为空')
+        this.$notify({
+          title: '温馨提示',
+          message: '评论不能为空',
+          type: 'warning'
+        })
       }
     },
     // 添加至购物车

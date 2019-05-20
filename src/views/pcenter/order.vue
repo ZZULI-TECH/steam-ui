@@ -25,7 +25,7 @@
       <el-table-column type="expand">
         <template slot-scope="props">
           <div v-for="item in props.row.orderGames" :key="item.id" style="width: 870px; height: 69px;margin-bottom: 10px">
-            <img :src="item.gameCover" style="float: left;cursor: pointer;margin-right: 100px" width="184" height="69" @click="goDetail(item.id)">
+            <img :src="item.gameCover" style="float: left;cursor: pointer;margin-right: 100px" width="184" height="69" @click="goDetail(item.gameId)">
             <div style="margin-top: 20px;float: left;margin-left: 20px;width: 250px">
               <span style="font-size: 16px;display: block; margin-bottom: -10px">{{ item.gameName }}</span>
             </div>
@@ -33,6 +33,7 @@
               <span style="display: block;margin-top: 20px;margin-right: 30px">￥{{ item.costPrice }}</span>
             </div>
           </div>
+          <el-button v-if="props.row.orderStatus === 3" type="success" style="width: 100px; margin-left: 400px" @click="qrsh(props.row.id)">确认收货</el-button>
         </template>
       </el-table-column>
       <el-table-column
@@ -68,7 +69,7 @@
   </div>
 </template>
 <script>
-import { orderList } from '@/api/order'
+import { orderList, update } from '@/api/order'
 import store from '@/store'
 export default {
   data() {
@@ -89,6 +90,13 @@ export default {
     // TODO
   },
   methods: {
+    // 查看游戏请
+    goDetail(gameId) {
+      this.$router.push({
+        path: '/detail',
+        query: { gameId: gameId }
+      })
+    },
     orderList() {
       orderList(this.query.userId, this.query.pageNum, this.query.pageSize, this.query.orderStatus).then(res => {
         // TODO orders
@@ -108,6 +116,20 @@ export default {
     currentChange(pageNum) {
       this.query.pageNum = pageNum
       this.orderList()
+    },
+    // 确认收货
+    qrsh(id) {
+      const row = {
+        id: id,
+        orderStatus: 4
+      }
+      update(row).then(res => {
+        this.$message({
+          message: '恭喜你，收货完成，前往游戏库下载游玩吧',
+          type: 'success'
+        })
+        this.$router.push('/lib')
+      })
     }
   }
 }

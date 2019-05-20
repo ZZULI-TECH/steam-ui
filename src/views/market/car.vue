@@ -66,7 +66,6 @@ export default {
         // })
         // alert('订单添加成功')
         // alert(res.content)
-        
         window.location.href = 'http://localhost:8080/alipay/pay/' + res.content
         // pay(res.content)
         this.getCar()
